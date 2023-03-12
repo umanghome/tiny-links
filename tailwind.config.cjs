@@ -5,7 +5,12 @@ const config = {
 		extend: {}
 	},
 
-	plugins: []
+	plugins: [require('@tailwindcss/typography'), require('daisyui')],
+
+	daisyui: {
+		themes: ['winter', 'night'],
+		darkTheme: 'night'
+	}
 };
 
 module.exports = config;

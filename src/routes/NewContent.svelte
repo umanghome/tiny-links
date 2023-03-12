@@ -54,7 +54,7 @@
 	$: renderableContentList = getRenderableContent(content, urls);
 </script>
 
-<p>
+<p class="bg-primary-content rounded-xl px-6 py-4">
 	{#each renderableContentList as renderableContent}
 		{#if renderableContent.type === 'url'}
 			<span
