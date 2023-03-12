@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
+	import CopyToClipboard from './CopyToClipboard.svelte';
 	import NewContent from './NewContent.svelte';
 
 	export let form: ActionData;
@@ -42,7 +43,7 @@
 		{#if loading}
 			Converting
 		{:else}
-			Convert
+			Convert 🪄
 		{/if}
 	</button>
 </form>
@@ -51,6 +52,7 @@
 	<div class="divider" />
 	<h2 class="mt-0">Your new content</h2>
 	<NewContent content={form.content} conversions={form.conversions} />
+	<CopyToClipboard text={form.content} />
 {/if}
 
 {#if hasMetadata}
