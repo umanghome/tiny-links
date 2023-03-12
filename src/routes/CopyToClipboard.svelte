@@ -1,12 +1,17 @@
 <script lang="ts">
-	import { copyToClipboard } from '$lib/clipboard';
-	import { onDestroy } from 'svelte';
+	import { copyToClipboard, isClipboardSupported } from '$lib/clipboard';
+	import { onDestroy, onMount } from 'svelte';
 
 	export let text: string;
 
 	let copied = false;
+	let supported = false;
 
 	let timeout: number | undefined;
+
+	onMount(() => {
+		supported = isClipboardSupported();
+	});
 
 	onDestroy(() => {
 		clearTimeout(timeout);
@@ -23,7 +28,13 @@
 	}
 </script>
 
-<button type="button" class="btn btn-sm btn-secondary swap swap-active" on:click={copy}>
+<button
+	type="button"
+	class="btn btn-sm btn-secondary swap swap-active"
+	disabled={!supported}
+	class:hidden={!supported}
+	on:click={copy}
+>
 	<span class:swap-off={copied}>Copy to clipboard 📋</span>
 	<span class:swap-off={!copied} class:swap-on={copied}>Copied</span>
 </button>
