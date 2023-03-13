@@ -2,13 +2,13 @@ import { default as TinyUrl } from 'tinyurl-api';
 import { getUrlsFromContent } from '$lib/url';
 import type { Actions } from './$types';
 
-function convert(url: string) {
-	if (url.endsWith('yt9dd6jy')) {
-		return Promise.reject(new Error('The API was unable to shorten the url.'));
-	} else {
-		return Promise.resolve(`https://done.com/${Math.floor(Math.random() * 1000000)}`);
-	}
-}
+// function convert(url: string) {
+// 	if (url.endsWith('yt9dd6jy')) {
+// 		return Promise.reject(new Error('The API was unable to shorten the url.'));
+// 	} else {
+// 		return Promise.resolve(`https://done.com/${Math.floor(Math.random() * 1000000)}`);
+// 	}
+// }
 
 export type Conversion = { url: string; to?: string; error?: string };
 
@@ -21,7 +21,7 @@ export const actions: Actions = {
 
 		const conversionPromises = await Promise.allSettled(
 			urls.map(function convertUrl(url) {
-				return convert(url);
+				return TinyUrl(url);
 			})
 		);
 
