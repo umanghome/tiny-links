@@ -8,9 +8,11 @@
 
 	let loading = false;
 
-	$: failedConversions = form?.conversions.filter((conversion) => conversion.error);
-	$: successfulConversions = form?.conversions.filter((conversion) => !conversion.error);
-	$: hasMetadata = failedConversions || successfulConversions;
+	$: failedConversions = form?.conversions.filter((conversion) => conversion.error) ?? [];
+	$: successfulConversions = form?.conversions.filter((conversion) => !conversion.error) ?? [];
+	$: hasFailedConversions = failedConversions.length > 0;
+	$: hasSuccessfulConversions = successfulConversions.length > 0;
+	$: hasMetadata = hasFailedConversions || hasSuccessfulConversions;
 </script>
 
 <h1>Make all links in your content tiny!</h1>
@@ -58,7 +60,7 @@
 {#if hasMetadata}
 	<div class="divider" />
 	<h2 class="mt-0">Metadata</h2>
-	{#if successfulConversions}
+	{#if hasSuccessfulConversions}
 		<h3>Successful URL conversions</h3>
 		<div class="overflow-auto">
 			<table class="table-auto">
@@ -86,7 +88,7 @@
 			</table>
 		</div>
 	{/if}
-	{#if failedConversions}
+	{#if hasFailedConversions}
 		<h3>Failed URL conversions</h3>
 		<div class="overflow-auto">
 			<table class="table-auto">
