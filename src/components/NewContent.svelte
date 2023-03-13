@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Conversion } from './proxy+page.server';
+	import type { Conversion } from '../routes/proxy+page.server';
 
 	export let content: string;
 	export let conversions: Conversion[];

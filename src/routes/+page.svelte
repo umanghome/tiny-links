@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
-	import CopyToClipboard from './CopyToClipboard.svelte';
-	import NewContent from './NewContent.svelte';
+	import CopyToClipboard from '$components/CopyToClipboard.svelte';
+	import NewContent from '$components/NewContent.svelte';
 
 	export let form: ActionData;
 
