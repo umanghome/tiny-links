@@ -12,9 +12,9 @@
 		</p>
 		<a
 			class="text-sm"
-			href="https://twitter.com/umanghome"
+			href="https://github.com/umanghome/tiny-links/issues"
 			target="_blank"
-			rel="noopener noreferrer">Report an issue on Twitter</a
+			rel="noopener noreferrer">Report an issue via GitHub</a
 		>
 	</footer>
 </section>
